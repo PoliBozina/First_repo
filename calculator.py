@@ -1,4 +1,4 @@
-counter=0
+#counter=0
 result = None
 operand = None
 operator = None
@@ -6,30 +6,32 @@ wait_for_number = True
 
 while True:
     oper = input(">>>")
-    counter=counter+1
-    if counter%2==1:
+    #counter=counter+1
+    if wait_for_number==True:
         try:
             oper=int(oper)
-            operand=str(oper)
-            print(f'>>>{oper}')
-            if result==None:
-                result=str(oper)
-            else:
-                result=result+operator+operand
+            #operand=str(oper)
+            #print(f'>>>{oper}')
+            wait_for_number=False
+            #if result==None:
+            #    result=str(oper)
+            #else:
+            #    result=result+operator+operand
             
         except ValueError:
             print(f'{oper} is not a number. Try again.')
-            counter=counter-1
             
-    elif counter%2==0:
+            
+    elif wait_for_number==False:
         oper=str(oper)
         if oper=='+' or oper=='-' or oper=='*' or oper=='/':
             operator=str(oper)
-            print(f'>>{oper}')
-            if oper=='+':
-                result=int(result)
-                operand=int(operand)
-                result=result+operand
+            #print(f'>>{oper}')
+            wait_for_number=True
+            #if oper=='+':
+            #    result=int(result)
+            #    operand=int(operand)
+            #    result=result+operand
 
             
         elif oper=='=':
@@ -38,7 +40,6 @@ while True:
             break    
         else:
             print(f'{oper} is not "+" or "-" or "/" or "*". Try again')
-            counter=counter-1
                       
     else:
         if oper=='=':
